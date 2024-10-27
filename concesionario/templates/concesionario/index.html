@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agencia de Carros</title>
+</head>
+<body>
+    <h1>Concesionarios</h1>
+    <ul>
+        {% for concesionario in concesionarios %}
+            <li>{{ concesionario.nombre }} - {{ concesionario.direccion }}</li>
+        {% endfor %}
+    </ul>
+
+    <h1>Marcas</h1>
+    <ul>
+        {% for marca in marcas %}
+            <li>{{ marca.nombre }}</li>
+        {% endfor %}
+    </ul>
+
+    <h1>Clientes</h1>
+    <ul>
+        {% for cliente in clientes %}
+            <li>{{ cliente.nombre }} - {{ cliente.email }}</li>
+        {% endfor %}
+    </ul>
+
+    <h1>Ventas</h1>
+    <ul>
+        {% for venta in ventas %}
+            <li>{{ venta.cliente }} compró {{ venta.marca }} en {{ venta.concesionario }} el {{ venta.fecha }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
