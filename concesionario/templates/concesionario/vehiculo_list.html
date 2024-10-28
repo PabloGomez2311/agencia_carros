@@ -1,0 +1,16 @@
+{% extends 'concesionario/base.html' %}
+
+{% block title %}Lista de Vehículos{% endblock %}
+
+{% block content %}
+    <h1>Lista de Vehículos</h1>
+    <a href="{% url 'vehiculo_create' %}">Crear Vehículo</a>
+    <ul>
+        {% for vehiculo in vehiculos %}
+            <li>{{ vehiculo.modelo }} - {{ vehiculo.color }} - {{ vehiculo.año }} - {{ vehiculo.precio }} - {{ vehiculo.marca.nombre }} - {{ vehiculo.disponibilidad|yesno:"Disponible,No disponible" }} 
+                <a href="{% url 'vehiculo_update' vehiculo.pk %}">Editar</a>
+                <a href="{% url 'vehiculo_delete' vehiculo.pk %}">Eliminar</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

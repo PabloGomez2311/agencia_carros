@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Agencia de Carros{% endblock %}</title>
+    {% load static %}  <!-- Asegúrate de que esta línea esté presente -->
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'vehiculo_list' %}">Vehículos</a></li>
+            <li><a href="{% url 'marca_list' %}">Marcas</a></li>
+            <li><a href="{% url 'cliente_list' %}">Clientes</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

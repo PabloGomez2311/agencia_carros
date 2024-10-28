@@ -1,0 +1,16 @@
+{% extends 'concesionario/base.html' %}
+
+{% block title %}Lista de Clientes{% endblock %}
+
+{% block content %}
+    <h1>Lista de Clientes</h1>
+    <a href="{% url 'cliente_create' %}">Crear Cliente</a>
+    <ul>
+        {% for cliente in clientes %}
+            <li>{{ cliente.nombre }} - {{ cliente.contacto }} - {{ cliente.correo_electronico }} 
+                <a href="{% url 'cliente_update' cliente.pk %}">Editar</a>
+                <a href="{% url 'cliente_delete' cliente.pk %}">Eliminar</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

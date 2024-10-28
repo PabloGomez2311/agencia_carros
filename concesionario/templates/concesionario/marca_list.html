@@ -1,0 +1,16 @@
+{% extends 'concesionario/base.html' %}
+
+{% block title %}Lista de Marcas{% endblock %}
+
+{% block content %}
+    <h1>Lista de Marcas</h1>
+    <a href="{% url 'marca_create' %}">Crear Marca</a>
+    <ul>
+        {% for marca in marcas %}
+            <li>{{ marca.nombre }} - {{ marca.pais_origen }} 
+                <a href="{% url 'marca_update' marca.pk %}">Editar</a>
+                <a href="{% url 'marca_delete' marca.pk %}">Eliminar</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
