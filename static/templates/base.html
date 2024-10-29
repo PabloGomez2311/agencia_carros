@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Agencia de Carros{% endblock %}</title>
+    {% load static %}
+    <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="{% static 'admin-lte/css/adminlte.min.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Include Sidebar -->
+        {% include '_main_sidebar.html' %}
+        
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                {% block content %}{% endblock %}
+            </section>
+        </div>
+        
+        <!-- AdminLTE JS -->
+        <script src="{% static 'admin-lte/js/adminlte.min.js' %}"></script>
+        <!-- Custom JS -->
+        <script src="{% static 'js/custom.js' %}"></script>
+    </div>
+</body>
+</html>
