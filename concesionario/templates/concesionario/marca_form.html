@@ -13,17 +13,19 @@
                 {% csrf_token %}
                 <div class="row">
                     {% for field in form %}
-                    <div class="col-md-12 mb-3">
-                        <div class="form-group">
-                            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                            {{ field.errors }}
-                            {{ field }}
-                            <div class="invalid-feedback">
-                                {% if field.errors %}
-                                    {{ field.errors|striptags }}
-                                {% else %}
-                                    Este campo es obligatorio.
-                                {% endif %}
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group row">
+                            <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label text-right">{{ field.label }}</label>
+                            <div class="col-sm-8">
+                                {{ field.errors }}
+                                {{ field }}
+                                <div class="invalid-feedback">
+                                    {% if field.errors %}
+                                        {{ field.errors|striptags }}
+                                    {% else %}
+                                        Este campo es obligatorio.
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -31,6 +33,7 @@
                 </div>
                 <div class="mt-4 text-center">
                     <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                    <a href="{% url 'marca_list' %}" class="btn btn-secondary btn-lg">Volver</a>
                 </div>
             </form>
         </div>
