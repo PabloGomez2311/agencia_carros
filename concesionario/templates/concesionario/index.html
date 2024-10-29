@@ -2,12 +2,39 @@
 
 {% block title %}Inicio{% endblock %}
 
+{% block header %}Inicio{% endblock %}
+
+{% block breadcrumb %}Inicio{% endblock %}
+
 {% block content %}
-    <h1>Bienvenido a la Agencia de Carros</h1>
-    <h2>Vehículos</h2>
-    <ul>
-        {% for vehiculo in vehiculos %}
-            <li>{{ vehiculo.modelo }} - {{ vehiculo.color }} - {{ vehiculo.año }} - {{ vehiculo.precio }} - {{ vehiculo.marca.nombre }} - {{ vehiculo.disponibilidad|yesno:"Disponible,No disponible" }}</li>
-        {% endfor %}
-    </ul>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <!-- Default box -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Bienvenido</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    Bienvenido a la aplicación de concesionario. Empieza a crear tu increíble aplicación!
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    Pie de página
+                </div>
+                <!-- /.card-footer-->
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+</div>
 {% endblock %}

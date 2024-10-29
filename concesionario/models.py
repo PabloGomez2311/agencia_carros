@@ -2,7 +2,7 @@ from django.db import models
 
 class Marca(models.Model):
     nombre = models.CharField(max_length=100)
-    pais_origen = models.CharField(max_length=100, default='Desconocido')  # Agrega un valor predeterminado aquí
+    pais_origen = models.CharField(max_length=100, default='Desconocido')
 
     def __str__(self):
         return self.nombre
@@ -11,12 +11,17 @@ class Vehiculo(models.Model):
     modelo = models.CharField(max_length=100)
     color = models.CharField(max_length=50)
     año = models.IntegerField()
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    precio = models.DecimalField(max_digits=14, decimal_places=0)  # Permite hasta 14 dígitos enteros
     disponibilidad = models.BooleanField(default=True)
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.modelo} ({self.marca.nombre})"
+
+    @property
+    def precio_formateado(self):
+        """Retorna el precio con puntos como separadores de miles."""
+        return f"{self.precio:,.0f}".replace(",", ".")  # Cambia comas por puntos
 
 class Cliente(models.Model):
     nombre = models.CharField(max_length=100)

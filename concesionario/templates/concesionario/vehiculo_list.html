@@ -1,16 +1,46 @@
 {% extends 'base.html' %}
+{% load humanize %} <!-- Cargar el filtro de humanización -->
 
 {% block title %}Lista de Vehículos{% endblock %}
 
 {% block content %}
-    <h1>Lista de Vehículos</h1>
-    <a href="{% url 'vehiculo_create' %}">Crear Vehículo</a>
-    <ul>
-        {% for vehiculo in vehiculos %}
-            <li>{{ vehiculo.modelo }} - {{ vehiculo.color }} - {{ vehiculo.año }} - {{ vehiculo.precio }} - {{ vehiculo.marca.nombre }} - {{ vehiculo.disponibilidad|yesno:"Disponible,No disponible" }} 
-                <a href="{% url 'vehiculo_update' vehiculo.pk %}">Editar</a>
-                <a href="{% url 'vehiculo_delete' vehiculo.pk %}">Eliminar</a>
-            </li>
-        {% endfor %}
-    </ul>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">Lista de Vehículos</h3>
+            <a href="{% url 'vehiculo_create' %}" class="btn btn-dark ml-auto">Crear Vehículo</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Color</th>
+                        <th scope="col">Año</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Disponibilidad</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vehiculo in vehiculos %}
+                    <tr>
+                        <td>{{ vehiculo.modelo }}</td>
+                        <td>{{ vehiculo.color }}</td>
+                        <td>{{ vehiculo.año }}</td>
+                        <td>{{ vehiculo.precio|intcomma }}</td> <!-- Formatear precio con intcomma -->
+                        <td>{{ vehiculo.marca.nombre }}</td>
+                        <td>{{ vehiculo.disponibilidad|yesno:"Disponible,No disponible" }}</td>
+                        <td>
+                            <a href="{% url 'vehiculo_update' vehiculo.pk %}" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="{% url 'vehiculo_delete' vehiculo.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}
