@@ -37,20 +37,24 @@ def index(request):
 # Vistas para Marca
 
 
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Marca
+from .forms import MarcaForm
+
 def marca_create(request):
     if request.method == 'POST':
-        form = MarcaForm(request.POST)
+        form = MarcaForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('marca_list')
     else:
         form = MarcaForm()
-    return render(request, 'concesionario/marca_create.html', {'form': form})
+    return render(request, 'concesionario/marca_form.html', {'form': form})
 
 def marca_update(request, pk):
     marca = get_object_or_404(Marca, pk=pk)
     if request.method == 'POST':
-        form = MarcaForm(request.POST, instance=marca)
+        form = MarcaForm(request.POST, request.FILES, instance=marca)
         if form.is_valid():
             form.save()
             return redirect('marca_list')
@@ -64,6 +68,15 @@ def marca_delete(request, pk):
         marca.delete()
         return redirect('marca_list')
     return render(request, 'concesionario/marca_confirm_delete.html', {'marca': marca})
+
+def marca_confirm_delete(request, pk):
+    marca = get_object_or_404(Marca, pk=pk)
+    if request.method == 'POST':
+        marca.delete()
+        return redirect('marca_list')
+    return render(request, 'concesionario/marca_confirm_delete.html', {'marca': marca})
+
+
 
 # Otras vistas...
 

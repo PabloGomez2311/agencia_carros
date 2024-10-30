@@ -1,24 +1,30 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Formulario de Marca{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <div class="card mx-auto" style="max-width: 800px;">
+    <div class="card mx-auto" style="max-width: 1000px;">
         <div class="card-header bg-primary text-white">
             <h3 class="mb-0">Formulario de Marca</h3>
         </div>
         <div class="card-body">
-            <form method="post" class="needs-validation" novalidate>
+            <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                 {% csrf_token %}
                 <div class="row">
                     {% for field in form %}
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-12 mb-3">
                         <div class="form-group row">
-                            <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label text-right">{{ field.label }}</label>
-                            <div class="col-sm-8">
+                            <label for="{{ field.id_for_label }}" class="col-sm-2 col-form-label text-right">{{ field.label }}</label>
+                            <div class="col-sm-10 d-flex align-items-center">
                                 {{ field.errors }}
                                 {{ field }}
+                                {% if field.name == 'logo' and field.value %}
+                                    <img src="{{ field.value.url }}" alt="Marca" class="img-thumbnail ml-2" style="width: 40px; height: 40px;">
+                                {% elif field.name == 'bandera' and field.value %}
+                                    <img src="{{ field.value.url }}" alt="País" class="img-thumbnail ml-2" style="width: 40px; height: 40px;">
+                                {% endif %}
                                 <div class="invalid-feedback">
                                     {% if field.errors %}
                                         {{ field.errors|striptags }}

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Formulario de Cliente{% endblock %}
 
@@ -12,15 +13,16 @@
             <form method="post" class="needs-validation" novalidate>
                 {% csrf_token %}
                 <div class="row">
+                    {% for field in form %}
                     <div class="col-md-6 mb-3">
                         <div class="form-group row">
-                            <label for="{{ form.nombre.id_for_label }}" class="col-sm-4 col-form-label text-right">{{ form.nombre.label }}</label>
+                            <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label text-right">{{ field.label }}</label>
                             <div class="col-sm-8">
-                                {{ form.nombre.errors }}
-                                {{ form.nombre }}
+                                {{ field.errors }}
+                                {{ field }}
                                 <div class="invalid-feedback">
-                                    {% if form.nombre.errors %}
-                                        {{ form.nombre.errors|striptags }}
+                                    {% if field.errors %}
+                                        {{ field.errors|striptags }}
                                     {% else %}
                                         Este campo es obligatorio.
                                     {% endif %}
@@ -28,54 +30,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <div class="form-group row">
-                            <label for="{{ form.contacto.id_for_label }}" class="col-sm-4 col-form-label text-right">{{ form.contacto.label }}</label>
-                            <div class="col-sm-8">
-                                {{ form.contacto.errors }}
-                                {{ form.contacto }}
-                                <div class="invalid-feedback">
-                                    {% if form.contacto.errors %}
-                                        {{ form.contacto.errors|striptags }}
-                                    {% else %}
-                                        Este campo es obligatorio.
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <div class="form-group row">
-                            <label for="{{ form.correo_electronico.id_for_label }}" class="col-sm-4 col-form-label text-right">{{ form.correo_electronico.label }}</label>
-                            <div class="col-sm-8">
-                                {{ form.correo_electronico.errors }}
-                                {{ form.correo_electronico }}
-                                <div class="invalid-feedback">
-                                    {% if form.correo_electronico.errors %}
-                                        {{ form.correo_electronico.errors|striptags }}
-                                    {% else %}
-                                        Este campo es obligatorio.
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <div class="form-group row">
-                            <label for="{{ form.vehiculo.id_for_label }}" class="col-sm-4 col-form-label text-right">{{ form.vehiculo.label }}</label>
-                            <div class="col-sm-8">
-                                {{ form.vehiculo.errors }}
-                                {{ form.vehiculo }}
-                                <div class="invalid-feedback">
-                                    {% if form.vehiculo.errors %}
-                                        {{ form.vehiculo.errors|striptags }}
-                                    {% else %}
-                                        Este campo es obligatorio.
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
                 <div class="mt-4 text-center">
                     <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
