@@ -1,6 +1,20 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Vehiculo, Marca, Cliente
 from .forms import VehiculoForm, MarcaForm, ClienteForm
+from django.shortcuts import render
+from .models import Cliente, Vehiculo, Marca
+
+def index(request):
+    total_clientes = Cliente.objects.count()
+    total_vehiculos = Vehiculo.objects.count()
+    total_marcas = Marca.objects.count()
+    context = {
+        'total_clientes': total_clientes,
+        'total_vehiculos': total_vehiculos,
+        'total_marcas': total_marcas,
+    }
+    return render(request, 'index.html', context)
+
 
 def marca_list(request):
     marcas = Marca.objects.all()

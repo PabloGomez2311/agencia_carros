@@ -10,30 +10,57 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <!-- Default box -->
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Bienvenido</h3>
-
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                            <i class="fas fa-times"></i>
-                        </button>
+            <!-- Dashboard -->
+            <div class="row">
+                <!-- Clientes -->
+                <div class="col-lg-4 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>{{ total_clientes }}</h3>
+                            <p>Clientes</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <a href="{% url 'cliente_list' %}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="card-body">
-                    Bienvenido a la aplicación de concesionario. Empieza a crear tu increíble aplicación!
+                <!-- ./col -->
+
+                <!-- Vehículos -->
+                <div class="col-lg-4 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>{{ total_vehiculos }}</h3>
+                            <p>Vehículos</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <a href="{% url 'vehiculo_list' %}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
                 </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    Pie de página
+                <!-- ./col -->
+
+                <!-- Marcas -->
+                <div class="col-lg-4 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{ total_marcas }}</h3>
+                            <p>Marcas</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <a href="{% url 'marca_list' %}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
                 </div>
-                <!-- /.card-footer-->
+                <!-- ./col -->
             </div>
-            <!-- /.card -->
+            <!-- /.row -->
         </div>
     </div>
 </div>
