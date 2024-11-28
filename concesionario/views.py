@@ -1,9 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Vehiculo, Marca, Cliente
 from .forms import VehiculoForm, MarcaForm, ClienteForm
-from django.shortcuts import render
-from .models import Cliente, Vehiculo, Marca
-<<<<<<< HEAD
 from django.db.models import Count
 
 def index(request):
@@ -16,26 +13,14 @@ def index(request):
     clientes = Cliente.objects.all()[:5]  # Limitamos a 5 clientes
     vehiculos = Vehiculo.objects.select_related('marca').all()[:5]  # Limitamos a 5 vehículos
 
-=======
-
-def index(request):
-    total_clientes = Cliente.objects.count()
-    total_vehiculos = Vehiculo.objects.count()
-    total_marcas = Marca.objects.count()
->>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
     context = {
         'total_clientes': total_clientes,
         'total_vehiculos': total_vehiculos,
         'total_marcas': total_marcas,
-<<<<<<< HEAD
         'clientes': clientes,
         'vehiculos': vehiculos,
     }
     return render(request, 'concesionario/index.html', context)
-=======
-    }
-    return render(request, 'index.html', context)
->>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
 
 
 def marca_list(request):
@@ -43,7 +28,6 @@ def marca_list(request):
     return render(request, 'concesionario/marca_list.html', {'marcas': marcas})
 
 def vehiculo_list(request):
-<<<<<<< HEAD
     queryset = Vehiculo.objects.all()
     
     # Obtener los filtros
@@ -88,20 +72,6 @@ def vehiculo_list(request):
     }
 
     return render(request, 'concesionario/vehiculo_list.html', context)
-=======
-    vehiculos = Vehiculo.objects.all()
-    return render(request, 'concesionario/vehiculo_list.html', {'vehiculos': vehiculos})
->>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
-
-def index(request):
-    vehiculos = Vehiculo.objects.all()
-    marcas = Marca.objects.all()
-    clientes = Cliente.objects.all()
-    return render(request, 'concesionario/index.html', {
-        'vehiculos': vehiculos,
-        'marcas': marcas,
-        'clientes': clientes
-    })
 
 # Vistas para Marca
 
@@ -146,7 +116,6 @@ def marca_confirm_delete(request, pk):
     return render(request, 'concesionario/marca_confirm_delete.html', {'marca': marca})
 
 
-<<<<<<< HEAD
 # Vistas para Vehiculo
 def vehiculo_list(request):
     queryset = Vehiculo.objects.all()
@@ -193,66 +162,24 @@ def vehiculo_list(request):
     }
 
     return render(request, 'concesionario/vehiculo_list.html', context)
-=======
-
-# Otras vistas...
-
-# Vistas para Vehiculo
-def vehiculo_list(request):
-    vehiculos = Vehiculo.objects.all()
-    return render(request, 'concesionario/vehiculo_list.html', {'vehiculos': vehiculos})
->>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
 
 def vehiculo_create(request):
     if request.method == 'POST':
         form = VehiculoForm(request.POST)
-<<<<<<< HEAD
-        try:
-            if form.is_valid():
-                vehiculo = form.save(commit=False)
-                precio_str = request.POST.get('precio', '0')
-                # Limpiar el precio de puntos y convertir a entero
-                precio_limpio = precio_str.replace('.', '')
-                vehiculo.precio = int(precio_limpio)
-                vehiculo.save()
-                return redirect('vehiculo_list')
-        except Exception as e:
-            print("Error al guardar:", str(e))
-            form.add_error('precio', 'Error al procesar el precio')
-=======
         if form.is_valid():
             form.save()
             return redirect('vehiculo_list')
->>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
     else:
         form = VehiculoForm()
     return render(request, 'concesionario/vehiculo_form.html', {'form': form})
 
 def vehiculo_update(request, pk):
     vehiculo = get_object_or_404(Vehiculo, pk=pk)
-<<<<<<< HEAD
-    print("Hola mundo")
-    if request.method == 'POST':
-        form = VehiculoForm(request.POST, instance=vehiculo)
-        try:
-            if form.is_valid():
-                vehiculo = form.save(commit=False)
-                precio_str = request.POST.get('precio', '0')
-                precio_limpio = precio_str.replace('.', '')
-                vehiculo.precio = int(precio_limpio)
-                vehiculo.save()
-                print(f"Precio: {vehiculo.precio}")
-                return redirect('vehiculo_list')
-        except Exception as e:
-            print("Error al guardar:", str(e))
-            form.add_error('precio', 'Error al procesar el precio')
-=======
     if request.method == 'POST':
         form = VehiculoForm(request.POST, instance=vehiculo)
         if form.is_valid():
             form.save()
             return redirect('vehiculo_list')
->>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
     else:
         form = VehiculoForm(instance=vehiculo)
     return render(request, 'concesionario/vehiculo_form.html', {'form': form})
