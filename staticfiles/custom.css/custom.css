@@ -1,0 +1,14 @@
+/* custom.css */
+.nav-header {
+    font-weight: bold;
+    color: #fff;
+}
+
+.nav-item .nav-link {
+    color: #c2c7d0;
+}
+
+.nav-item .nav-link:hover {
+    background-color: #1e282c;
+    color: #fff;
+}

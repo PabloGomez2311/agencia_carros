@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Formulario de Vehículo{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card mx-auto shadow" style="max-width: 800px;">
+        <div class="card-header bg-primary text-white py-3">
+            <h3 class="mb-0"><i class="fas fa-car mr-2"></i>Formulario de Vehículo</h3>
+        </div>
+        <div class="card-body">
+            <form method="post" class="needs-validation" novalidate>
+                {% csrf_token %}
+                <div class="row">
+                    {% for field in form %}
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group row">
+                            <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label text-right">{{ field.label }}</label>
+                            <div class="col-sm-8">
+                                {% if field.name == 'precio' %}
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="text" 
+                                               id="{{ field.id_for_label }}" 
+                                               name="{{ field.name }}" 
+                                               class="form-control border-dark precio-input" 
+                                               value="{{ field.value|default:'' }}"
+                                               required>
+                                    </div>
+                                {% elif field.name == 'disponibilidad' %}
+                                    <div class="form-check">
+                                        {{ field.errors }}
+                                        {{ field }}
+                                        <label class="form-check-label" for="{{ field.id_for_label }}">
+                                            Disponible
+                                        </label>
+                                    </div>
+                                {% else %}
+                                    {{ field.errors }}
+                                    {{ field }}
+                                {% endif %}
+                                <div class="invalid-feedback">
+                                    {% if field.errors %}
+                                        {{ field.errors|striptags }}
+                                    {% else %}
+                                        Este campo es obligatorio.
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="mt-4 text-center">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="fas fa-save mr-2"></i>Guardar
+                    </button>
+                    <a href="{% url 'vehiculo_list' %}" class="btn btn-secondary btn-lg">
+                        <i class="fas fa-arrow-left mr-2"></i>Volver
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const precioInput = document.querySelector('.precio-input');
+        
+        // Verificar si encontró el elemento
+        console.log("Input encontrado:", precioInput);
+
+       
+    });
+</script>
+{% endblock %}
