@@ -3,5 +3,9 @@ Django==5.1.1
 django-adminlte3==0.1.6
 pillow==10.4.0
 sqlparse==0.5.1
+<<<<<<< HEAD
 psycopg2-binary>=2.8
 dj-database-url>=0.5.0
+=======
+
+>>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e

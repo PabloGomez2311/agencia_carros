@@ -4,9 +4,15 @@
 
 {% block content %}
 <div class="container mt-4">
+<<<<<<< HEAD
     <div class="card mx-auto shadow" style="max-width: 800px;">
         <div class="card-header bg-primary text-white py-3">
             <h3 class="mb-0"><i class="fas fa-car mr-2"></i>Formulario de Vehículo</h3>
+=======
+    <div class="card mx-auto" style="max-width: 800px;">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Formulario de Vehículo</h3>
+>>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
         </div>
         <div class="card-body">
             <form method="post" class="needs-validation" novalidate>
@@ -18,6 +24,7 @@
                             <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label text-right">{{ field.label }}</label>
                             <div class="col-sm-8">
                                 {% if field.name == 'precio' %}
+<<<<<<< HEAD
                                     <div class="input-group">
                                         <span class="input-group-text">$</span>
                                         <input type="text" 
@@ -27,6 +34,9 @@
                                                value="{{ field.value|default:'' }}"
                                                required>
                                     </div>
+=======
+                                    <input type="text" id="{{ field.id_for_label }}" name="{{ field.name }}" class="form-control border-dark" maxlength="12" value="{{ field.value|stringformat:'d' }}" required>
+>>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
                                 {% elif field.name == 'disponibilidad' %}
                                     <div class="form-check">
                                         {{ field.errors }}
@@ -52,12 +62,17 @@
                     {% endfor %}
                 </div>
                 <div class="mt-4 text-center">
+<<<<<<< HEAD
                     <button type="submit" class="btn btn-primary btn-lg">
                         <i class="fas fa-save mr-2"></i>Guardar
                     </button>
                     <a href="{% url 'vehiculo_list' %}" class="btn btn-secondary btn-lg">
                         <i class="fas fa-arrow-left mr-2"></i>Volver
                     </a>
+=======
+                    <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                    <a href="{% url 'vehiculo_list' %}" class="btn btn-secondary btn-lg">Volver</a>
+>>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
                 </div>
             </form>
         </div>
@@ -65,6 +80,7 @@
 </div>
 
 <script>
+<<<<<<< HEAD
     document.addEventListener('DOMContentLoaded', function() {
         const precioInput = document.querySelector('.precio-input');
         
@@ -73,5 +89,23 @@
 
        
     });
+=======
+    // Bootstrap validation
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            var forms = document.getElementsByClassName('needs-validation');
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+>>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
 </script>
 {% endblock %}
