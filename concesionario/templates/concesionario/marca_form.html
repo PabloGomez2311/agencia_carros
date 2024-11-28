@@ -13,7 +13,6 @@
             <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                 {% csrf_token %}
                 <div class="row">
-
                     <!-- Columna izquierda para información básica -->
                     <div class="col-md-6">
                         <div class="card">
@@ -79,7 +78,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <!-- Botones de acción -->
@@ -97,7 +95,6 @@
 </div>
 
 <script>
-
     // Actualizar nombre de archivo en input file
     document.querySelectorAll('.custom-file-input').forEach(function(input) {
         input.addEventListener('change', function(e) {
@@ -106,27 +103,5 @@
             next.innerText = fileName;
         });
     });
-
-
-    // Bootstrap validation
-    (function() {
-        'use strict';
-        window.addEventListener('load', function() {
-            var forms = document.getElementsByClassName('needs-validation');
-
-            Array.prototype.filter.call(forms, function(form) {
-
-            var validation = Array.prototype.filter.call(forms, function(form) {
-
-                form.addEventListener('submit', function(event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
 </script>
 {% endblock %}
