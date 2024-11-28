@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 
-<<<<<<< HEAD
 {% block title %}Dashboard - Concesionario{% endblock %}
 
 {% block content %}
@@ -152,70 +151,4 @@
 .border-left-success { border-left: .25rem solid #1cc88a!important; }
 .border-left-info { border-left: .25rem solid #36b9cc!important; }
 </style>
-=======
-{% block title %}Inicio{% endblock %}
-
-{% block header %}Inicio{% endblock %}
-
-{% block breadcrumb %}Inicio{% endblock %}
-
-{% block content %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <!-- Dashboard -->
-            <div class="row">
-                <!-- Clientes -->
-                <div class="col-lg-4 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3>{{ total_clientes }}</h3>
-                            <p>Clientes</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <a href="{% url 'cliente_list' %}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-
-                <!-- Vehículos -->
-                <div class="col-lg-4 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            <h3>{{ total_vehiculos }}</h3>
-                            <p>Vehículos</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-car"></i>
-                        </div>
-                        <a href="{% url 'vehiculo_list' %}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-
-                <!-- Marcas -->
-                <div class="col-lg-4 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{ total_marcas }}</h3>
-                            <p>Marcas</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-industry"></i>
-                        </div>
-                        <a href="{% url 'marca_list' %}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-            </div>
-            <!-- /.row -->
-        </div>
-    </div>
-</div>
->>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
 {% endblock %}
