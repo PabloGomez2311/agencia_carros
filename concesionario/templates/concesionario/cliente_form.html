@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block title %}{% if form.instance.pk %}Editar Cliente{% else %}Nuevo Cliente{% endif %}{% endblock %}
 
 {% block content %}
@@ -16,21 +15,11 @@
                     Nuevo Cliente
                 {% endif %}
             </h3>
-
-{% block title %}Formulario de Cliente{% endblock %}
-
-{% block content %}
-<div class="container mt-4">
-    <div class="card mx-auto" style="max-width: 800px;">
-        <div class="card-header bg-primary text-white">
-            <h3 class="mb-0">Formulario de Cliente</h3>
-
         </div>
         <div class="card-body">
             <form method="post" class="needs-validation" novalidate>
                 {% csrf_token %}
                 <div class="row">
-
                     <!-- Información Personal -->
                     <div class="col-md-6">
                         <div class="card mb-3">
@@ -89,26 +78,11 @@
                                     {{ form.vehiculo }}
                                     {% if form.vehiculo.errors %}
                                         <div class="text-danger">{{ form.vehiculo.errors|striptags }}</div>
-
-                    {% for field in form %}
-                    <div class="col-md-6 mb-3">
-                        <div class="form-group row">
-                            <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label text-right">{{ field.label }}</label>
-                            <div class="col-sm-8">
-                                {{ field.errors }}
-                                {{ field }}
-                                <div class="invalid-feedback">
-                                    {% if field.errors %}
-                                        {{ field.errors|striptags }}
-                                    {% else %}
-                                        Este campo es obligatorio.
-
                                     {% endif %}
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <!-- Botones de acción -->
@@ -119,13 +93,6 @@
                     <a href="{% url 'cliente_list' %}" class="btn btn-secondary btn-lg">
                         <i class="fas fa-arrow-left mr-2"></i>Volver
                     </a>
-
-                    {% endfor %}
-                </div>
-                <div class="mt-4 text-center">
-                    <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
-                    <a href="{% url 'cliente_list' %}" class="btn btn-secondary btn-lg">Volver</a>
-
                 </div>
             </form>
         </div>
@@ -133,7 +100,6 @@
 </div>
 
 <script>
-
     document.addEventListener('DOMContentLoaded', function() {
         // Validación del campo de contacto
         const contactoInput = document.querySelector('input[name="contacto"]');
@@ -149,17 +115,12 @@
         });
     });
 
-
     // Bootstrap validation
     (function() {
         'use strict';
         window.addEventListener('load', function() {
             var forms = document.getElementsByClassName('needs-validation');
-
             Array.prototype.filter.call(forms, function(form) {
-
-            var validation = Array.prototype.filter.call(forms, function(form) {
-
                 form.addEventListener('submit', function(event) {
                     if (form.checkValidity() === false) {
                         event.preventDefault();
