@@ -1,28 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<<<<<<< HEAD
+
 {% block title %}Editar Marca{% endblock %}
-=======
+
 {% block title %}Formulario de Marca{% endblock %}
->>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
+
 
 {% block content %}
 <div class="container mt-4">
     <div class="card mx-auto" style="max-width: 1000px;">
-<<<<<<< HEAD
+
         <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
             <h3 class="mb-0">{% if form.instance.pk %}Editar Marca: {{ form.instance.nombre }}{% else %}Nueva Marca{% endif %}</h3>
-=======
+
         <div class="card-header bg-primary text-white">
             <h3 class="mb-0">Formulario de Marca</h3>
->>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
+
         </div>
         <div class="card-body">
             <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                 {% csrf_token %}
                 <div class="row">
-<<<<<<< HEAD
+
                     <!-- Columna izquierda para información básica -->
                     <div class="col-md-6">
                         <div class="card">
@@ -83,7 +83,7 @@
                                         <div class="mt-2">
                                             <img src="{{ form.instance.bandera.url }}" alt="Bandera actual" class="img-thumbnail" style="max-height: 100px;">
                                         </div>
-=======
+
                     {% for field in form %}
                     <div class="col-md-12 mb-3">
                         <div class="form-group row">
@@ -101,13 +101,13 @@
                                         {{ field.errors|striptags }}
                                     {% else %}
                                         Este campo es obligatorio.
->>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
+
                                     {% endif %}
                                 </div>
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
+
                 </div>
 
                 <!-- Botones de acción -->
@@ -118,13 +118,13 @@
                     <a href="{% url 'marca_list' %}" class="btn btn-secondary btn-lg">
                         <i class="fas fa-arrow-left mr-2"></i>Volver
                     </a>
-=======
+
                     {% endfor %}
                 </div>
                 <div class="mt-4 text-center">
                     <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
                     <a href="{% url 'marca_list' %}" class="btn btn-secondary btn-lg">Volver</a>
->>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
+
                 </div>
             </form>
         </div>
@@ -132,7 +132,7 @@
 </div>
 
 <script>
-<<<<<<< HEAD
+
     // Actualizar nombre de archivo en input file
     document.querySelectorAll('.custom-file-input').forEach(function(input) {
         input.addEventListener('change', function(e) {
@@ -142,18 +142,17 @@
         });
     });
 
-=======
->>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
+
     // Bootstrap validation
     (function() {
         'use strict';
         window.addEventListener('load', function() {
             var forms = document.getElementsByClassName('needs-validation');
-<<<<<<< HEAD
+
             Array.prototype.filter.call(forms, function(form) {
-=======
+
             var validation = Array.prototype.filter.call(forms, function(form) {
->>>>>>> fc8ba0a41a8635567d5705060d161bf95028d91e
+
                 form.addEventListener('submit', function(event) {
                     if (form.checkValidity() === false) {
                         event.preventDefault();
